@@ -31,6 +31,60 @@
 - (void)updateFlipResultLabel:(UILabel*)label usingCards:(NSArray *)cards scored:(int)score {
     //abstract
     NSLog(@"updateFlipResultLabel in SetGameViewController");
+    NSLog(@"cards %d score %d", cards.count, score);
+    
+    SetCard *latestSetCard = [cards lastObject];
+    
+    //check if there is at least one card
+    if(latestSetCard){
+        //match or mismatch
+        if(score != 0){
+            int cardCount = 0;
+            
+            //match
+            if(score > 0){
+                NSMutableAttributedString *newText = [[NSMutableAttributedString alloc] initWithString:@"Matched "];
+                
+                for(SetCard *setCard in cards){
+                    if(cardCount != 0){
+                        [newText appendAttributedString:[[NSAttributedString alloc] initWithString:@" & "]];
+                    }
+                    [newText appendAttributedString:[self attributedStringForSetCard:setCard]];
+                    cardCount++;
+                }
+                
+                [newText appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" for %d points!", score]]];
+                label.attributedText = newText;
+            }
+            //mismatch
+            else {
+                //label.text = [NSString stringWithFormat:@"%@ don't match! %d point penalty", [cards componentsJoinedByString:@" & "], score];
+                
+                NSMutableAttributedString *newText = [[NSMutableAttributedString alloc] init];
+                
+                for(SetCard *setCard in cards){
+                    if(cardCount != 0){
+                        [newText appendAttributedString:[[NSAttributedString alloc] initWithString:@" & "]];
+                    }
+                    [newText appendAttributedString:[self attributedStringForSetCard:setCard]];
+                    cardCount++;
+                }
+                
+                [newText appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" don't match! %d points penalty!", score]]];
+                label.attributedText = newText;
+            }
+        } else
+            //no match, just flipped a card up
+        {
+            NSMutableAttributedString *newText = [[NSMutableAttributedString alloc] initWithString:latestSetCard.isFaceUp ? @"Flipped up " : @"Flipped down "];
+            [newText appendAttributedString:[self attributedStringForSetCard:latestSetCard]];
+            label.attributedText = newText;
+        }
+    }
+    //if there are no cards (at the beginning of a new game)
+    else {
+        label.text = @"Let's play!";
+    }
 }
 
 + (NSDictionary *)colorDictionary {
@@ -50,48 +104,11 @@
             
             SetCard *setCard = (SetCard *)card;
             
-            //if we have a custom set card view we will use playingCardView.rank = playingCard.rank to update the card...
-            //for now we just use attributed strings
-            
-            //build & set text from symbols and elementscount
-            NSMutableString *symbolCountText = [[NSMutableString alloc] init];
-            for (int elementCounter = 1; elementCounter <= setCard.elementsCount; elementCounter++) {
-                [symbolCountText appendString:setCard.symbol];
-                
-            }
-            setCardTextView.text = symbolCountText;
-            
-            //update the attributed strings
-            NSMutableAttributedString *mat = [setCardTextView.attributedText mutableCopy];
-            UIColor *cardBaseColor = [[self class] colorDictionary][setCard.color];
-            NSRange textRange = NSMakeRange(0, setCard.elementsCount);
-            
-            //ToDo: use switch statement instead! to much repeatition here
-            if([setCard.shade isEqual: @"solid"]){
-                
-                [mat addAttributes:@{ NSForegroundColorAttributeName : [cardBaseColor colorWithAlphaComponent: 1],
-                                      NSStrokeWidthAttributeName: @-3,
-                                      NSStrokeColorAttributeName: cardBaseColor
-                                      } range:textRange];
-                
-            } else if([setCard.shade isEqual: @"striped"]) {
-                
-                [mat addAttributes:@{ NSForegroundColorAttributeName : [cardBaseColor colorWithAlphaComponent:0.5],
-                                      NSStrokeWidthAttributeName: @-3,
-                                      NSStrokeColorAttributeName: cardBaseColor
-                                      } range:textRange];
-                
-            } else if([setCard.shade isEqual: @"open"]) {
-                
-                [mat addAttributes:@{ NSForegroundColorAttributeName : [cardBaseColor colorWithAlphaComponent:0],
-                                      NSStrokeWidthAttributeName: @-3,
-                                      NSStrokeColorAttributeName: cardBaseColor
-                                      } range:textRange];
-            }
-            
-            setCardTextView.attributedText = mat;
+            setCardTextView.attributedText = [self attributedStringForSetCard:setCard];
             
             if(!setCard.isUnplayable){
+                setCardTextView.hidden = NO;
+                
                 if(setCard.isFaceUp){
                     setCardTextView.backgroundColor = [UIColor lightGrayColor];
                 } else {
@@ -103,7 +120,57 @@
             }
         }
     }
+}
+
+- (NSAttributedString *)attributedStringForSetCard:(SetCard *)setCard {
     
+    NSMutableAttributedString *mat;
+    
+    if(setCard){
+        //build & set text from symbols and elementscount
+        NSMutableString *symbolCountText = [[NSMutableString alloc] init];
+        for (int elementCounter = 1; elementCounter <= setCard.elementsCount; elementCounter++) {
+            [symbolCountText appendString:setCard.symbol];
+        }
+        
+        //update the attributed strings
+        mat = [[NSMutableAttributedString alloc] initWithString:symbolCountText];
+        UIColor *cardBaseColor = [[self class] colorDictionary][setCard.color];
+        NSRange textRange = NSMakeRange(0, setCard.elementsCount);
+        
+        NSMutableParagraphStyle *pStyle = [[NSMutableParagraphStyle alloc] init];
+        pStyle.alignment = NSTextAlignmentCenter;
+        
+        //ToDo: use switch statement instead! to much repeatition here
+        if([setCard.shade isEqual: @"solid"]){
+            
+            [mat setAttributes:@{ NSForegroundColorAttributeName : [cardBaseColor colorWithAlphaComponent: 1],
+                                  NSStrokeWidthAttributeName: @-3,
+                                  NSStrokeColorAttributeName: cardBaseColor,
+                                  NSParagraphStyleAttributeName: pStyle
+                                  } range:textRange];
+            
+        } else if([setCard.shade isEqual: @"striped"]) {
+            
+            [mat setAttributes:@{ NSForegroundColorAttributeName : [cardBaseColor colorWithAlphaComponent:0.5],
+                                  NSStrokeWidthAttributeName: @-3,
+                                  NSStrokeColorAttributeName: cardBaseColor,
+                                  NSParagraphStyleAttributeName: pStyle
+                                  } range:textRange];
+            
+        } else if([setCard.shade isEqual: @"open"]) {
+            
+            [mat setAttributes:@{ NSForegroundColorAttributeName : [cardBaseColor colorWithAlphaComponent:0],
+                                  NSStrokeWidthAttributeName: @-3,
+                                  NSStrokeColorAttributeName: cardBaseColor,
+                                  NSParagraphStyleAttributeName: pStyle
+                                  } range:textRange];
+        }
+    }
+    
+    NSAttributedString *attString = [mat copy];
+    
+    return attString;
 }
 
 @end

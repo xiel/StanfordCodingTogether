@@ -32,10 +32,6 @@
 }
 
 - (void)updateFlipResultLabel:(UILabel*)label usingCards:(NSArray *)cards scored:(int)score {
-    //abstract
-    NSLog(@"updateFlipResultLabel in PlayingCardGameViewController");
-    NSLog(@"cards %d score %d", cards.count, score);
-    
     Card *latestCard = [cards lastObject];
     
     //match or mismatch
