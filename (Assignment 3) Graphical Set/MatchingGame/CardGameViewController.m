@@ -137,6 +137,7 @@
     self.game = nil;
     self.gameResult = nil;
     self.flipCount = 0;
+    [self.cardCollectionView reloadData];
     [self updateUI];
 }
 
