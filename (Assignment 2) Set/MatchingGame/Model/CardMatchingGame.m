@@ -12,7 +12,9 @@
 @interface CardMatchingGame()
 
 @property (nonatomic) int score;
-@property (nonatomic) NSString *lastFlipResult;
+
+//new flip result
+@property (nonatomic, readwrite) NSMutableArray *latestFlippedCards;
 
 //array to hold the cars of our game, lazy instantiation again
 @property (strong, nonatomic) NSMutableArray *cards; //of Card
@@ -26,6 +28,12 @@
 - (NSMutableArray *)cards {
     if(!_cards) _cards = [[NSMutableArray alloc] init];
     return _cards;
+}
+
+//lazy instantiation of latest flipped cards
+- (NSMutableArray *)latestFlippedCards {
+    if(!_latestFlippedCards) _latestFlippedCards = [[NSMutableArray alloc] init];
+    return _latestFlippedCards;
 }
 
 - (id)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck {
@@ -62,6 +70,9 @@
     int scoreDiff = 0;
     NSMutableArray *playableOpenCards = [[NSMutableArray alloc] init];
     
+    //remove all cards and add all open playable cards...
+    [self.latestFlippedCards removeAllObjects];
+    
     if(!card.isUnplayable){
         
         //check if flipping up this card creates a match or penalty
@@ -72,6 +83,7 @@
                 if(otherCard.isFaceUp && !otherCard.isUnplayable){
                     //add card to the playable card set
                     [playableOpenCards addObject:otherCard];
+                    [self.latestFlippedCards addObject:otherCard];
                     
                     //stop adding card if we have the maximum for current matchMode
                     if(playableOpenCards.count == self.matchMode-1){
@@ -86,20 +98,14 @@
                 //the matching itself happens in the card class itself
                 int matchScore = [card match:playableOpenCards];
                 
-                NSArray *playedCards = [playableOpenCards arrayByAddingObject:card];
-                
                 //if it's a match, we up our score
                 if(matchScore){
                     scoreDiff = matchScore * MATCH_BONUS;
                     card.unplayable = YES;
-                    self.lastFlipResult = [NSString stringWithFormat:@"Matched %@ for %d points",
-                                           [playedCards componentsJoinedByString:@" & "], scoreDiff];
                 }
                 //if it doesn't match we will get a penalty
                 else {
                     scoreDiff = -1 * MATCH_BONUS;
-                    self.lastFlipResult = [NSString stringWithFormat:@"%@ don't match! %d point penalty",
-                                           [playedCards componentsJoinedByString:@" & "], scoreDiff];
                 }
                 
                 //successfully played cards get unplayable and stay faceUp
@@ -114,15 +120,17 @@
             }
             //it costs points to flip up cards :)
             self.score -= FLIP_COST;
+            
         }
+        
+        //update flipped properties for result label
+        //add card, whether is is face up or not
+        self.latestFlippedScore = scoreDiff;
+        [self.latestFlippedCards addObject:card];
         
         //flip the card
         card.faceUp = !card.isFaceUp;
         card.animateFlip = YES;
-        
-        if(!scoreDiff){
-            self.lastFlipResult = [NSString stringWithFormat: card.isFaceUp ? @"Flipped up %@" : @"Flipped down %@" , card];
-        }
     }
     
 }

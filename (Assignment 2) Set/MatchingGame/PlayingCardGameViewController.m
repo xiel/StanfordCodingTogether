@@ -31,6 +31,35 @@
     return [[PlayingCardDeck alloc] init];
 }
 
+- (void)updateFlipResultLabel:(UILabel*)label usingCards:(NSArray *)cards scored:(int)score {
+    //abstract
+    NSLog(@"updateFlipResultLabel in PlayingCardGameViewController");
+    NSLog(@"cards %d score %d", cards.count, score);
+    
+    Card *latestCard = [cards lastObject];
+    
+    //match or mismatch
+    if(score != 0){
+        //match
+        if(score > 0){
+            label.text = [NSString stringWithFormat:@"Matched %@ for %d points", [cards componentsJoinedByString:@" & "], score];
+        } else
+        //mismatch
+        {
+            label.text = [NSString stringWithFormat:@"%@ don't match! %d point penalty", [cards componentsJoinedByString:@" & "], score];
+        }
+    } else
+    //no match, just flipped a card up
+    {
+        label.text = [NSString stringWithFormat: latestCard.isFaceUp ? @"Flipped up %@" : @"Flipped down %@" , latestCard];
+    }
+    
+    //if there are no cards (at the beginning of a new game)
+    if(!latestCard){
+        label.text = @"Let's play!";
+    }
+}
+
 - (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card animate:(BOOL)animate {
     if([cell isKindOfClass:[PlayingCardCollectionViewCell class]]){
         PlayingCardView *playingCardView = ((PlayingCardCollectionViewCell *)cell).playingCardView;

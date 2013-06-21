@@ -20,7 +20,10 @@
 
 @property (nonatomic) int matchMode;
 @property (nonatomic, readonly) int score;
-@property (nonatomic, readonly) NSString *lastFlipResult;
+
+//new flip result
+@property (nonatomic, readonly) NSMutableArray *latestFlippedCards;
+@property (nonatomic) int latestFlippedScore;
 
 
 @end

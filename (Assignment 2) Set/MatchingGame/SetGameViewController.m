@@ -28,6 +28,11 @@
     return [[SetCardDeck alloc] init];
 }
 
+- (void)updateFlipResultLabel:(UILabel*)label usingCards:(NSArray *)cards scored:(int)score {
+    //abstract
+    NSLog(@"updateFlipResultLabel in SetGameViewController");
+}
+
 + (NSDictionary *)colorDictionary {
     return @{ @"Red": [UIColor redColor],
               @"Green": [UIColor greenColor],

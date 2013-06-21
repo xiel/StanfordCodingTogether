@@ -26,10 +26,30 @@
 
 @implementation CardGameViewController
 
-//not really needed atm
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+//gives the subclass the possibility to update the cell
+- (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card animate:(BOOL)animate {
+    //abstract
 }
+
+//abstract
++ (int)matchMode {
+    return 0;
+}
+
+//creates a deck for the game to be played
+- (Deck *)createDeck {
+    return nil; //abstract - this class won't work if it is not implemented in subclass
+}
+
+- (void)updateFlipResultLabel:(UILabel*)label usingCards:(NSArray *)cards scored:(int)score {
+    //abstract
+    NSLog(@"Please implement updateFlipResultLabel");
+}
+
+//not really needed atm
+//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+//    return 1;
+//}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
@@ -47,16 +67,6 @@
     return cell;
 }
 
-//gives the subclass the possibility to update the cell
-- (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card animate:(BOOL)animate {
-    //abstract
-}
-
-//abstract
-+ (int)matchMode {
-    return 0;
-}
-
 - (GameResult *)gameResult {
     if(!_gameResult) _gameResult = [[GameResult alloc] init];
     return _gameResult;
@@ -69,11 +79,6 @@
     _game.matchMode = [[self class] matchMode];
     
     return _game;
-}
-
-//creates a deck for the game to be played
-- (Deck *)createDeck {
-    return nil; //abstract - this class won't work if it is not implemented in subclass
 }
 
 //method the keep the UI insync with our model
@@ -95,7 +100,8 @@
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     
     //update the flip result label
-    self.flipResultLabel.text = self.game.lastFlipResult;
+    //self.flipResultLabel.text = self.game.lastFlipResult;
+    [self updateFlipResultLabel:self.flipResultLabel usingCards:self.game.latestFlippedCards scored:self.game.latestFlippedScore];
 }
 
 //define the setter for flipCount

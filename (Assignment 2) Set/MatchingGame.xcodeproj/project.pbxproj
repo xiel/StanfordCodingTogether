@@ -214,6 +214,7 @@
 		17C1D68A176E797E00286905 /* MatchingGame */ = {
 			isa = PBXGroup;
 			children = (
+				17C1D69C176E797E00286905 /* MainStoryboard.storyboard */,
 				17C1D693176E797E00286905 /* CardGameAppDelegate.h */,
 				17C1D694176E797E00286905 /* CardGameAppDelegate.m */,
 				17C1D69F176E797E00286905 /* CardGameViewController.h */,
@@ -222,7 +223,6 @@
 				17F5EDC31770B35500F87EA0 /* GameResult.m */,
 				17F5EDBF1770B06200F87EA0 /* GameResultsViewController.h */,
 				17F5EDC01770B06200F87EA0 /* GameResultsViewController.m */,
-				17C1D69C176E797E00286905 /* MainStoryboard.storyboard */,
 				17282927177131B200936907 /* PlayingCardCollectionViewCell.h */,
 				17282928177131B200936907 /* PlayingCardCollectionViewCell.m */,
 				1728292A1771364D00936907 /* PlayingCardGameViewController.h */,
