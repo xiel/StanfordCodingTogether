@@ -43,18 +43,12 @@
 
 - (void)updateFlipResultLabel:(UILabel*)label usingCards:(NSArray *)cards scored:(int)score {
     //abstract
-    NSLog(@"Please implement updateFlipResultLabel");
 }
-
-//not really needed atm
-//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-//    return 1;
-//}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
     
-    return self.startingCardCount; //better ask the game here, how many cards ared actually in play
+    return [self.game numberOfCardsInPlay]; //ask the game how many cards are actually in play
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -88,8 +82,14 @@
     for(UICollectionViewCell *cell in [self.cardCollectionView visibleCells]){
         NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
         Card *card = [self.game cardAtIndex:indexPath.item];
-        [self updateCell:cell usingCard:card animate: card.animateFlip ? YES : NO ];
         card.animateFlip = NO;
+        
+        if(card.isUnplayable){
+            [self.game removeCardAtIndex:indexPath.item];
+            [self.cardCollectionView deleteItemsAtIndexPaths:@[indexPath]];
+        } else {
+            [self updateCell:cell usingCard:card animate: card.animateFlip ? YES : NO ];
+        }
     }
     
     //update the flipsLabel accordanctly
@@ -100,7 +100,6 @@
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     
     //update the flip result label
-    //self.flipResultLabel.text = self.game.lastFlipResult;
     [self updateFlipResultLabel:self.flipResultLabel usingCards:self.game.latestFlippedCards scored:self.game.latestFlippedScore];
 }
 

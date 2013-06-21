@@ -16,7 +16,9 @@
 - (id)initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck;
 
 - (Card *)cardAtIndex:(NSUInteger)index;
+- (void)removeCardAtIndex:(NSUInteger)index;
 - (void)flipCardAtIndex:(NSUInteger)index;
+- (int)numberOfCardsInPlay;
 
 @property (nonatomic) int matchMode;
 @property (nonatomic, readonly) int score;

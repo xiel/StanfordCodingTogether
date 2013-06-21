@@ -11,7 +11,7 @@
 #import "SetCardDeck.h"
 #import "SetCardCollectionViewCell.h"
 
-#define SET_STARTING_CARD_COUNT 24
+#define SET_STARTING_CARD_COUNT 12
 #define SET_MATCHING_MODE 3
 
 @implementation SetGameViewController

@@ -140,6 +140,14 @@
     return (index < self.cards.count) ? self.cards[index] : nil;
 }
 
+- (void)removeCardAtIndex:(NSUInteger)index {
+    [self.cards removeObjectAtIndex:index];
+}
+
+- (int)numberOfCardsInPlay {
+    return self.cards.count;
+}
+
 #define MATCH_MODE 2
 
 - (int)matchMode {
