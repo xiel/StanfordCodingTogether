@@ -27,7 +27,6 @@
     
     //check if the cards are a valid set
     if(otherCards.count == 2){
-        
         SetCard *otherFirst = otherCards[0];
         SetCard *otherSecond = otherCards[1];
         
@@ -44,7 +43,7 @@
         BOOL validCount = (self.elementsCount == otherFirst.elementsCount && self.elementsCount == otherSecond.elementsCount)
         || (self.elementsCount != otherFirst.elementsCount && self.elementsCount != otherSecond.elementsCount && otherFirst.elementsCount != otherSecond.elementsCount);
         
-        score = (validColors && validShades && validSymbols && validCount) ? 5 : 0;
+        score = (validColors && validShades && validSymbols && validCount) ? 10 : 0;
     }
     
     return score;

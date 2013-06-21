@@ -34,24 +34,25 @@
 - (void)updateFlipResultLabel:(UILabel*)label usingCards:(NSArray *)cards scored:(int)score {
     Card *latestCard = [cards lastObject];
     
-    //match or mismatch
-    if(score != 0){
-        //match
-        if(score > 0){
-            label.text = [NSString stringWithFormat:@"Matched %@ for %d points", [cards componentsJoinedByString:@" & "], score];
+    if(latestCard){
+        //match or mismatch
+        if(score != 0){
+            //match
+            if(score > 0){
+                label.text = [NSString stringWithFormat:@"Matched %@ for %d points", [cards componentsJoinedByString:@" & "], score];
+            } else
+                //mismatch
+            {
+                label.text = [NSString stringWithFormat:@"%@ don't match! %d point penalty", [cards componentsJoinedByString:@" & "], score];
+            }
         } else
-        //mismatch
+            //no match, just flipped a card up
         {
-            label.text = [NSString stringWithFormat:@"%@ don't match! %d point penalty", [cards componentsJoinedByString:@" & "], score];
+            label.text = [NSString stringWithFormat: latestCard.isFaceUp ? @"Flipped up %@" : @"Flipped down %@" , latestCard];
         }
-    } else
-    //no match, just flipped a card up
-    {
-        label.text = [NSString stringWithFormat: latestCard.isFaceUp ? @"Flipped up %@" : @"Flipped down %@" , latestCard];
     }
-    
     //if there are no cards (at the beginning of a new game)
-    if(!latestCard){
+    else{
         label.text = @"Let's play!";
     }
 }

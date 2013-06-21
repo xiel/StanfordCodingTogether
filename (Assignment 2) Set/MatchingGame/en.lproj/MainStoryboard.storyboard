@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="qLU-Im-R5e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qLU-Im-R5e">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
@@ -13,32 +13,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZJ3-5h-fdK">
-                                <rect key="frame" x="205" y="461" width="95" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ3-5h-fdK">
+                                <rect key="frame" x="251" y="466" width="49" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.245202106" green="0.245202106" blue="0.245202106" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W5M-Ec-bLi">
-                                <rect key="frame" x="205" y="483" width="95" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5M-Ec-bLi">
+                                <rect key="frame" x="243" y="486" width="57" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Let's Play!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" id="KWc-GP-de2">
-                                <rect key="frame" x="20" y="23" width="280" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Let's Play!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KWc-GP-de2">
+                                <rect key="frame" x="20" y="23" width="280" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                 <color key="textColor" red="0.24520210597826086" green="0.24520210597826086" blue="0.24520210597826086" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yUZ-AU-Kll">
-                                <rect key="frame" x="128" y="461" width="65" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="196" verticalHuggingPriority="169" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUZ-AU-Kll">
+                                <rect key="frame" x="20" y="466" width="51" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.51764708757400513" green="0.78039222955703735" blue="0.47058826684951782" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Deal">
                                     <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,8 +51,8 @@
                                     <action selector="dealNewCards" destination="2" eventType="touchUpInside" id="etB-8c-W48"/>
                                 </connections>
                             </button>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="DGt-lP-XtS">
-                                <rect key="frame" x="0.0" y="45" width="320" height="403"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DGt-lP-XtS">
+                                <rect key="frame" x="0.0" y="45" width="320" height="408"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.4912368616942393" green="0.78766134510869568" blue="0.44514105796261744" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AnX-YZ-ab1">
@@ -68,7 +69,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view opaque="NO" contentMode="scaleToFill" id="HiP-ED-2VW" customClass="PlayingCardView">
+                                                <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HiP-ED-2VW" customClass="PlayingCardView">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="75"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -90,6 +91,26 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="KWc-GP-de2" secondAttribute="centerX" id="42u-o1-2KI"/>
+                            <constraint firstItem="KWc-GP-de2" firstAttribute="top" secondItem="3" secondAttribute="top" constant="23" id="4Qy-v9-pM1"/>
+                            <constraint firstAttribute="trailing" secondItem="W5M-Ec-bLi" secondAttribute="trailing" constant="20" id="4dc-6x-O7a"/>
+                            <constraint firstItem="yUZ-AU-Kll" firstAttribute="top" secondItem="ZJ3-5h-fdK" secondAttribute="top" id="7kC-13-jFO"/>
+                            <constraint firstItem="ZJ3-5h-fdK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yUZ-AU-Kll" secondAttribute="trailing" priority="600" constant="8" symbolic="YES" id="Anc-4o-evj"/>
+                            <constraint firstItem="yUZ-AU-Kll" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" id="Fvm-Wc-pp3"/>
+                            <constraint firstAttribute="trailing" secondItem="ZJ3-5h-fdK" secondAttribute="trailing" constant="20" id="Fxp-hN-4Lo"/>
+                            <constraint firstAttribute="bottom" secondItem="yUZ-AU-Kll" secondAttribute="bottom" constant="15" id="Hix-LY-OVd"/>
+                            <constraint firstItem="yUZ-AU-Kll" firstAttribute="baseline" secondItem="W5M-Ec-bLi" secondAttribute="baseline" constant="-10" id="M4k-wD-dwT"/>
+                            <constraint firstItem="DGt-lP-XtS" firstAttribute="leading" secondItem="3" secondAttribute="leading" id="SzJ-Ve-tsL"/>
+                            <constraint firstItem="KWc-GP-de2" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" id="Uuv-T2-FBM"/>
+                            <constraint firstItem="DGt-lP-XtS" firstAttribute="top" secondItem="3" secondAttribute="top" constant="45" id="YNc-UK-ozT"/>
+                            <constraint firstItem="W5M-Ec-bLi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yUZ-AU-Kll" secondAttribute="trailing" priority="600" constant="8" symbolic="YES" id="ag8-nS-jne"/>
+                            <constraint firstAttribute="trailing" secondItem="KWc-GP-de2" secondAttribute="trailing" constant="20" id="iDE-6z-j31"/>
+                            <constraint firstItem="DGt-lP-XtS" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" id="l8b-d2-nyV"/>
+                            <constraint firstItem="yUZ-AU-Kll" firstAttribute="top" secondItem="DGt-lP-XtS" secondAttribute="bottom" constant="13" id="obH-Ym-kRe"/>
+                            <constraint firstItem="DGt-lP-XtS" firstAttribute="top" secondItem="KWc-GP-de2" secondAttribute="bottom" constant="8" symbolic="YES" id="zfC-29-RKP"/>
+                            <constraint firstAttribute="bottom" secondItem="DGt-lP-XtS" secondAttribute="bottom" priority="999" constant="66" id="zmm-Ok-SQU"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Playing Cards" image="playingGame-icon.png" id="e1x-fG-A7Q"/>
@@ -137,32 +158,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Faf-WA-YV0">
-                                <rect key="frame" x="205" y="458" width="95" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Faf-WA-YV0">
+                                <rect key="frame" x="251" y="457" width="49" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.245202106" green="0.245202106" blue="0.245202106" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xWf-df-vzL">
-                                <rect key="frame" x="205" y="480" width="95" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWf-df-vzL">
+                                <rect key="frame" x="243" y="483" width="57" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Let's Play!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" id="9M0-Pp-9j5">
-                                <rect key="frame" x="20" y="20" width="280" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Let's Play!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9M0-Pp-9j5">
+                                <rect key="frame" x="20" y="20" width="280" height="13"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                 <color key="textColor" red="0.245202106" green="0.245202106" blue="0.245202106" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SqR-Et-TAK">
-                                <rect key="frame" x="128" y="459" width="65" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="261" verticalCompressionResistancePriority="622" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqR-Et-TAK">
+                                <rect key="frame" x="20" y="457" width="80" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.57367072135132235" green="0.80273410945353829" blue="0.8274977189781022" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="swj-vt-Yq4"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Deal">
                                     <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -174,26 +199,26 @@
                                     <action selector="dealNewCards" destination="OiM-P2-oYL" eventType="touchUpInside" id="kff-Av-Mvh"/>
                                 </connections>
                             </button>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="e2E-sI-pmf">
-                                <rect key="frame" x="0.0" y="42" width="320" height="403"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e2E-sI-pmf">
+                                <rect key="frame" x="0.0" y="42" width="320" height="407"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.76719957590103149" green="0.91379094123840332" blue="0.93528413772583008" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d0g-FM-8cl">
-                                    <size key="itemSize" width="70" height="53"/>
+                                    <size key="itemSize" width="70" height="40"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlayingCard" id="sf2-HU-soy" customClass="SetCardCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="70" height="53"/>
+                                        <rect key="frame" x="10" y="10" width="70" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="70" height="53"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" id="thG-zD-Tlx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="53"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="thG-zD-Tlx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <gestureRecognizers/>
@@ -225,6 +250,28 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xWf-df-vzL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SqR-Et-TAK" secondAttribute="trailing" constant="8" symbolic="YES" id="28t-Rb-3z2"/>
+                            <constraint firstAttribute="trailing" secondItem="xWf-df-vzL" secondAttribute="trailing" constant="20" id="4HL-SM-pD4"/>
+                            <constraint firstAttribute="trailing" secondItem="Faf-WA-YV0" secondAttribute="trailing" constant="20" id="6Sc-Vc-K7k"/>
+                            <constraint firstItem="SqR-Et-TAK" firstAttribute="top" secondItem="e2E-sI-pmf" secondAttribute="bottom" constant="8" symbolic="YES" id="9NT-hO-2aa"/>
+                            <constraint firstAttribute="bottom" secondItem="xWf-df-vzL" secondAttribute="bottom" constant="18" id="9by-Gs-0Dw"/>
+                            <constraint firstAttribute="trailing" secondItem="9M0-Pp-9j5" secondAttribute="trailing" constant="20" id="C9R-dc-QeH"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SqR-Et-TAK" secondAttribute="trailing" constant="20" symbolic="YES" id="EVw-P1-w9Q"/>
+                            <constraint firstItem="xWf-df-vzL" firstAttribute="top" secondItem="Faf-WA-YV0" secondAttribute="bottom" constant="8" symbolic="YES" id="GPK-4t-mMJ"/>
+                            <constraint firstItem="SqR-Et-TAK" firstAttribute="top" secondItem="Faf-WA-YV0" secondAttribute="top" id="JWN-QA-Zuw"/>
+                            <constraint firstItem="Faf-WA-YV0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SqR-Et-TAK" secondAttribute="trailing" priority="600" constant="8" symbolic="YES" id="Kim-7c-kqD"/>
+                            <constraint firstItem="9M0-Pp-9j5" firstAttribute="leading" secondItem="14y-wa-fi6" secondAttribute="leading" constant="20" id="VCM-Zd-ZnJ"/>
+                            <constraint firstItem="SqR-Et-TAK" firstAttribute="leading" secondItem="14y-wa-fi6" secondAttribute="leading" constant="20" symbolic="YES" id="VRX-Vc-5ac"/>
+                            <constraint firstItem="Faf-WA-YV0" firstAttribute="top" secondItem="e2E-sI-pmf" secondAttribute="bottom" constant="8" symbolic="YES" id="Vzy-jr-nL6"/>
+                            <constraint firstAttribute="bottom" secondItem="SqR-Et-TAK" secondAttribute="bottom" constant="20" symbolic="YES" id="WmC-nr-Qyy"/>
+                            <constraint firstItem="e2E-sI-pmf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9M0-Pp-9j5" secondAttribute="bottom" constant="8" symbolic="YES" id="XLM-op-UDA"/>
+                            <constraint firstItem="e2E-sI-pmf" firstAttribute="leading" secondItem="14y-wa-fi6" secondAttribute="leading" id="eXK-aa-Hnc"/>
+                            <constraint firstItem="e2E-sI-pmf" firstAttribute="trailing" secondItem="14y-wa-fi6" secondAttribute="trailing" id="hqc-GK-O2v"/>
+                            <constraint firstItem="9M0-Pp-9j5" firstAttribute="top" secondItem="14y-wa-fi6" secondAttribute="top" constant="20" symbolic="YES" id="jMG-DS-AJB"/>
+                            <constraint firstAttribute="centerX" secondItem="9M0-Pp-9j5" secondAttribute="centerX" id="jPj-0c-Geu"/>
+                            <constraint firstItem="e2E-sI-pmf" firstAttribute="top" secondItem="14y-wa-fi6" secondAttribute="top" constant="42" id="ntd-Hl-E5m"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Set" image="set-icon.png" id="6Kf-0N-GPX"/>
@@ -259,6 +306,9 @@
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
         <class className="PlayingCardCollectionViewCell" superclassName="UICollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PlayingCardCollectionViewCell.h"/>

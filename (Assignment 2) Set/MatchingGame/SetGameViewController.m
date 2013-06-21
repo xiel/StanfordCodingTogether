@@ -29,9 +29,6 @@
 }
 
 - (void)updateFlipResultLabel:(UILabel*)label usingCards:(NSArray *)cards scored:(int)score {
-    //abstract
-    NSLog(@"updateFlipResultLabel in SetGameViewController");
-    NSLog(@"cards %d score %d", cards.count, score);
     
     SetCard *latestSetCard = [cards lastObject];
     
@@ -58,7 +55,6 @@
             }
             //mismatch
             else {
-                //label.text = [NSString stringWithFormat:@"%@ don't match! %d point penalty", [cards componentsJoinedByString:@" & "], score];
                 
                 NSMutableAttributedString *newText = [[NSMutableAttributedString alloc] init];
                 
