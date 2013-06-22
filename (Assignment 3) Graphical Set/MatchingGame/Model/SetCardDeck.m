@@ -20,10 +20,10 @@
     if(self){
         
         //loop through the suits and ranks
-        for(NSString *symbol in [SetCard validSymbols]){
-            for(NSString *color in [SetCard validColors]){
-                for(NSString *shade in [SetCard validShades]){
-                    for (NSUInteger elementsCount = 1; elementsCount <= [SetCard maxElementsCount]; elementsCount++) {
+        for (NSUInteger elementsCount = 1; elementsCount <= [SetCard maxValuesPerProperty]; elementsCount++) {
+            for (NSUInteger color = 1; color <= [SetCard maxValuesPerProperty]; color++) {
+                for (NSUInteger shade = 1; shade <= [SetCard maxValuesPerProperty]; shade++) {
+                    for (NSUInteger symbol = 1; symbol <= [SetCard maxValuesPerProperty]; symbol++) {
                         
                         //create a new card, allocate memory and initialize it
                         SetCard *card = [[SetCard alloc] init];

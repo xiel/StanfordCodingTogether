@@ -8,18 +8,16 @@
 
 #import "SetCard.h"
 
-#define MAX_SHAPE_COUNT 3;
+#define VALUES_PER_PROPERTY 3;
 
 @implementation SetCard
 
++ (NSUInteger)maxValuesPerProperty {
+    return VALUES_PER_PROPERTY;
+}
+
 - (NSString *)contents{
-    NSArray *elementsCountStrings = [SetCard elementsCountStrings];
-    
-    //return the contents as one string (eg. OneBlueSolid▲)
-    return [[[elementsCountStrings[self.elementsCount]
-              stringByAppendingString:self.color]
-                stringByAppendingString:self.shade]
-                    stringByAppendingString:self.symbol];
+    return nil;
 }
 
 - (int)match:(NSArray *)otherCards {
@@ -50,66 +48,27 @@
 }
 
 - (void)setElementsCount:(NSUInteger)elementsCount {
-    if(elementsCount <= [SetCard maxElementsCount]){
+    if(elementsCount <= [SetCard maxValuesPerProperty]){
         _elementsCount = elementsCount;
     }
 }
 
-@synthesize symbol = _symbol;
-
-- (void)setSymbol:(NSString *)symbol {
-    if([[SetCard validSymbols] containsObject:symbol]){
-        _symbol = symbol;
-    }
-}
-- (NSString *)symbol {
-    return _symbol ? _symbol : @"?";
-}
-
-@synthesize color = _color;
-
-- (void)setColor:(NSString *)color {
-    if([[SetCard validColors] containsObject:color]){
+- (void)setColor:(NSUInteger)color {
+    if(color <= [SetCard maxValuesPerProperty]){
         _color = color;
     }
 }
-- (NSString *)color {
-    return _color ? _color : @"?";
-}
 
-@synthesize shade = _shade;
-
-- (void)setShade:(NSString *)shade {
-    //call the class method "validSuits" to get the suits
-    if([[SetCard validShades] containsObject:shade]){
-        _shade = shade;
+- (void)setSymbol:(NSUInteger)symbol {
+    if(symbol <= [SetCard maxValuesPerProperty]){
+        _symbol = symbol;
     }
 }
 
-- (NSString *)shade {
-    return _shade ? _shade : @"?";
+- (void)setShade:(NSUInteger)shade {
+    if(shade <= [SetCard maxValuesPerProperty]){
+        _shade = shade;
+    }
 }
-
-+ (NSArray *)validSymbols {
-    return @[@"▲", @"●", @"■"];
-}
-
-+ (NSArray *)validColors {
-    return @[@"Red", @"Green", @"Blue"];
-}
-
-+ (NSArray *)validShades {
-    return @[@"solid", @"striped", @"open"];
-}
-
-+ (NSArray *)elementsCountStrings {
-    return @[@"?", @"One", @"Two", @"Three"];
-}
-
-+ (NSUInteger)maxElementsCount {
-    return MAX_SHAPE_COUNT;
-}
-
-
 
 @end

@@ -61,6 +61,7 @@
 		17F5EDBE17709D3C00F87EA0 /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F5EDBD17709D3C00F87EA0 /* cardback.png */; };
 		17F5EDC11770B06200F87EA0 /* GameResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F5EDC01770B06200F87EA0 /* GameResultsViewController.m */; };
 		17F5EDC41770B35500F87EA0 /* GameResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F5EDC31770B35500F87EA0 /* GameResult.m */; };
+		17FEEC6B17761D2F00475356 /* SetCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FEEC6A17761D2F00475356 /* SetCardView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +138,8 @@
 		17F5EDC01770B06200F87EA0 /* GameResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameResultsViewController.m; sourceTree = "<group>"; };
 		17F5EDC21770B35500F87EA0 /* GameResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameResult.h; sourceTree = "<group>"; };
 		17F5EDC31770B35500F87EA0 /* GameResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameResult.m; sourceTree = "<group>"; };
+		17FEEC6917761D2F00475356 /* SetCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardView.h; sourceTree = "<group>"; };
+		17FEEC6A17761D2F00475356 /* SetCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +234,8 @@
 				172828F417712FF600936907 /* PlayingCardView.m */,
 				1728293A1772532600936907 /* SetCardCollectionViewCell.h */,
 				1728293B1772532600936907 /* SetCardCollectionViewCell.m */,
+				17FEEC6917761D2F00475356 /* SetCardView.h */,
+				17FEEC6A17761D2F00475356 /* SetCardView.m */,
 				172829311771C49B00936907 /* SetGameViewController.h */,
 				172829321771C49B00936907 /* SetGameViewController.m */,
 				17C1D6AA176E7AF000286905 /* Model */,
@@ -385,6 +390,7 @@
 				17C1D6A9176E79BE00286905 /* Card.m in Sources */,
 				17C1D6AD176E7B2000286905 /* Deck.m in Sources */,
 				172829331771C49B00936907 /* SetGameViewController.m in Sources */,
+				17FEEC6B17761D2F00475356 /* SetCardView.m in Sources */,
 				1728293C1772532600936907 /* SetCardCollectionViewCell.m in Sources */,
 				17C1D6B0176E814C00286905 /* PlayingCard.m in Sources */,
 				17C1D6B3176E8D2800286905 /* PlayingCardDeck.m in Sources */,

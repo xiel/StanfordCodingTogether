@@ -58,6 +58,9 @@
 }
 
 - (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card animate:(BOOL)animate {
+    
+    
+    
     if([cell isKindOfClass:[PlayingCardCollectionViewCell class]]){
         PlayingCardView *playingCardView = ((PlayingCardCollectionViewCell *)cell).playingCardView;
         if([card isKindOfClass:[PlayingCard class]]){

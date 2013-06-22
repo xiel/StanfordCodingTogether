@@ -9,6 +9,7 @@
 #import "SetGameViewController.h"
 #import "SetCard.h"
 #import "SetCardDeck.h"
+#import "SetCardView.h"
 #import "SetCardCollectionViewCell.h"
 
 #define SET_STARTING_CARD_COUNT 20
@@ -30,6 +31,8 @@
 
 - (void)updateFlipResultLabel:(UILabel*)label usingCards:(NSArray *)cards scored:(int)score {
     
+    return;
+    
     SetCard *latestSetCard = [cards lastObject];
     
     //check if there is at least one card
@@ -46,7 +49,7 @@
                     if(cardCount != 0){
                         [newText appendAttributedString:[[NSAttributedString alloc] initWithString:@" & "]];
                     }
-                    [newText appendAttributedString:[self attributedStringForSetCard:setCard]];
+//                    [newText appendAttributedString:[self attributedStringForSetCard:setCard]];
                     cardCount++;
                 }
                 
@@ -62,7 +65,7 @@
                     if(cardCount != 0){
                         [newText appendAttributedString:[[NSAttributedString alloc] initWithString:@" & "]];
                     }
-                    [newText appendAttributedString:[self attributedStringForSetCard:setCard]];
+//                    [newText appendAttributedString:[self attributedStringForSetCard:setCard]];
                     cardCount++;
                 }
                 
@@ -73,7 +76,7 @@
             //no match, just flipped a card up
         {
             NSMutableAttributedString *newText = [[NSMutableAttributedString alloc] initWithString:latestSetCard.isFaceUp ? @"Flipped up " : @"Flipped down "];
-            [newText appendAttributedString:[self attributedStringForSetCard:latestSetCard]];
+//            [newText appendAttributedString:[self attributedStringForSetCard:latestSetCard]];
             label.attributedText = newText;
         }
     }
@@ -83,90 +86,38 @@
     }
 }
 
-+ (NSDictionary *)colorDictionary {
-    return @{ @"Red": [UIColor redColor],
-              @"Green": [UIColor greenColor],
-              @"Blue": [UIColor blueColor]
-    };
-}
 
 - (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card animate:(BOOL)animate {
     
     if([cell isKindOfClass:[SetCardCollectionViewCell class]]){
         
-        UITextView *setCardTextView = ((SetCardCollectionViewCell *)cell).setCardTextView;
+        SetCardView *setCardView = ((SetCardCollectionViewCell *)cell).setCardView;
         
+        //some introspection
         if([card isKindOfClass:[SetCard class]]){
             
             SetCard *setCard = (SetCard *)card;
             
-            setCardTextView.attributedText = [self attributedStringForSetCard:setCard];
+            setCardView.elementsCount = setCard.elementsCount;
+            setCardView.color = setCard.color;
+            setCardView.symbol = setCard.symbol;
+            setCardView.shade = setCard.shade;
+            setCardView.faceUp = setCard.isFaceUp;
             
-            if(!setCard.isUnplayable){
-                setCardTextView.hidden = NO;
-                
-                if(setCard.isFaceUp){
-                    setCardTextView.backgroundColor = [UIColor lightGrayColor];
-                } else {
-                    setCardTextView.backgroundColor = [UIColor whiteColor];
-                }
-            } else {
-                //disabled cards
-                setCardTextView.hidden = YES;
-            }
+//            if(!setCard.isUnplayable){
+//                setCardTextView.hidden = NO;
+//                
+//                if(setCard.isFaceUp){
+//                    setCardTextView.backgroundColor = [UIColor lightGrayColor];
+//                } else {
+//                    setCardTextView.backgroundColor = [UIColor whiteColor];
+//                }
+//            } else {
+//                //disabled cards
+//                setCardTextView.hidden = YES;
+//            }
         }
     }
-}
-
-- (NSAttributedString *)attributedStringForSetCard:(SetCard *)setCard {
-    
-    NSMutableAttributedString *mat;
-    
-    if(setCard){
-        //build & set text from symbols and elementscount
-        NSMutableString *symbolCountText = [[NSMutableString alloc] init];
-        for (int elementCounter = 1; elementCounter <= setCard.elementsCount; elementCounter++) {
-            [symbolCountText appendString:setCard.symbol];
-        }
-        
-        //update the attributed strings
-        mat = [[NSMutableAttributedString alloc] initWithString:symbolCountText];
-        UIColor *cardBaseColor = [[self class] colorDictionary][setCard.color];
-        NSRange textRange = NSMakeRange(0, setCard.elementsCount);
-        
-        NSMutableParagraphStyle *pStyle = [[NSMutableParagraphStyle alloc] init];
-        pStyle.alignment = NSTextAlignmentCenter;
-        
-        //ToDo: use switch statement instead! to much repeatition here
-        if([setCard.shade isEqual: @"solid"]){
-            
-            [mat setAttributes:@{ NSForegroundColorAttributeName : [cardBaseColor colorWithAlphaComponent: 1],
-                                  NSStrokeWidthAttributeName: @-3,
-                                  NSStrokeColorAttributeName: cardBaseColor,
-                                  NSParagraphStyleAttributeName: pStyle
-                                  } range:textRange];
-            
-        } else if([setCard.shade isEqual: @"striped"]) {
-            
-            [mat setAttributes:@{ NSForegroundColorAttributeName : [cardBaseColor colorWithAlphaComponent:0.5],
-                                  NSStrokeWidthAttributeName: @-3,
-                                  NSStrokeColorAttributeName: cardBaseColor,
-                                  NSParagraphStyleAttributeName: pStyle
-                                  } range:textRange];
-            
-        } else if([setCard.shade isEqual: @"open"]) {
-            
-            [mat setAttributes:@{ NSForegroundColorAttributeName : [cardBaseColor colorWithAlphaComponent:0],
-                                  NSStrokeWidthAttributeName: @-3,
-                                  NSStrokeColorAttributeName: cardBaseColor,
-                                  NSParagraphStyleAttributeName: pStyle
-                                  } range:textRange];
-        }
-    }
-    
-    NSAttributedString *attString = [mat copy];
-    
-    return attString;
 }
 
 @end

@@ -82,18 +82,20 @@
     for(UICollectionViewCell *cell in [self.cardCollectionView visibleCells]){
         NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
         Card *card = [self.game cardAtIndex:indexPath.item];
-        card.animateFlip = NO;
         
-        if(card.isUnplayable){
-            [self.game removeCardAtIndex:indexPath.item];
-            [self.cardCollectionView deleteItemsAtIndexPaths:@[indexPath]];
-        } else {
-            [self updateCell:cell usingCard:card animate: card.animateFlip ? YES : NO ];
-        }
+        //maybe move to update cell
+//        if(card.isUnplayable){
+//            [self.game removeCardAtIndex:indexPath.item];
+//            [self.cardCollectionView deleteItemsAtIndexPaths:@[indexPath]];
+//        } else {
+//            
+//        }
+        
+        [self updateCell:cell usingCard:card animate: card.animateFlip ? YES : NO ];
+        card.animateFlip = NO;
     }
     
-    //update the flipsLabel accordanctly
-    //by creating a new NSString with Format, %d = description
+    //update the flipsLabel accordanctly by creating a new NSString with Format, %d = description
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
     
     //update the score label

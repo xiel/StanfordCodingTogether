@@ -204,43 +204,30 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.76719957590103149" green="0.91379094123840332" blue="0.93528413772583008" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d0g-FM-8cl">
-                                    <size key="itemSize" width="70" height="40"/>
+                                    <size key="itemSize" width="65" height="90"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlayingCard" id="sf2-HU-soy" customClass="SetCardCollectionViewCell">
-                                        <rect key="frame" x="10" y="10" width="70" height="40"/>
+                                        <rect key="frame" x="10" y="10" width="65" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="65" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="thG-zD-Tlx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
+                                                <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fa5-QS-RWU" customClass="SetCardView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="65" height="90"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <gestureRecognizers/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="SetCard">
-                                                            <attributes>
-                                                                <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="M30-a7-75h" appends="YES" id="d92-g5-D7i"/>
-                                                    </connections>
-                                                </textView>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outlet property="setCardTextView" destination="thG-zD-Tlx" id="hVK-q2-h8a"/>
+                                            <outlet property="setCardView" destination="fa5-QS-RWU" id="hRa-aC-SYl"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -325,8 +312,11 @@
         <class className="SetCardCollectionViewCell" superclassName="UICollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardCollectionViewCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="setCardTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="setCardView" candidateClass="SetCardView"/>
             </relationships>
+        </class>
+        <class className="SetCardView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardView.h"/>
         </class>
         <class className="SetGameViewController" superclassName="CardGameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetGameViewController.h"/>
