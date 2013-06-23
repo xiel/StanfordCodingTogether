@@ -84,14 +84,13 @@
         Card *card = [self.game cardAtIndex:indexPath.item];
         
         //maybe move to update cell
-//        if(card.isUnplayable){
-//            [self.game removeCardAtIndex:indexPath.item];
-//            [self.cardCollectionView deleteItemsAtIndexPaths:@[indexPath]];
-//        } else {
-//            
-//        }
+        if(card.isUnplayable){
+            [self.game removeCardAtIndex:indexPath.item];
+            [self.cardCollectionView deleteItemsAtIndexPaths:@[indexPath]];
+        } else {
+            [self updateCell:cell usingCard:card animate: card.animateFlip ? YES : NO ];
+        }
         
-        [self updateCell:cell usingCard:card animate: card.animateFlip ? YES : NO ];
         card.animateFlip = NO;
     }
     
@@ -138,9 +137,18 @@
     }
 }
 
-- (IBAction)addMoreCards:(id)sender {
+#define ADD_CARDS_PER_REQUEST 3
+
+- (IBAction)addMoreCards:(UIButton *)sender {
     
-    [self.game addAdditionalCardToGame];
+    for (int i = 0; i < ADD_CARDS_PER_REQUEST; i++) {
+        int cardsInPlayBeforeAdd = self.game.numberOfCardsInPlay;
+        [self.game addAdditionalCardToGame];
+        if(cardsInPlayBeforeAdd == self.game.numberOfCardsInPlay){
+            sender.hidden = YES;
+        }
+    }
+    
     [self.cardCollectionView reloadData];
     [self updateUI];
     

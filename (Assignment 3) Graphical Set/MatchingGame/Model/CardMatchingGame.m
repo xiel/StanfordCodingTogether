@@ -155,9 +155,9 @@
 
 - (void)addAdditionalCardToGame {
     Card *card = [self.deck drawRandomCard];
-//    if(card){
+    if(card){
         [self.cards addObject:card];
-//    }
+    }
 }
 
 #define MATCH_MODE 2

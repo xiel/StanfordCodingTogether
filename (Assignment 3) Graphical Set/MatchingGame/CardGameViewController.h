@@ -15,6 +15,7 @@
 @property (nonatomic) NSUInteger startingCardCount; //abstract
 + (int)matchMode; //abstract
 - (Deck *)createDeck; //abstract
+- (void)updateUI;
 - (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card animate:(BOOL)animate; //abstract
 - (void)updateFlipResultLabel:(UILabel*)label usingCards:(NSArray *)cards scored:(int)score;
 

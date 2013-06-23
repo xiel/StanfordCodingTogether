@@ -12,7 +12,7 @@
 #import "SetCardView.h"
 #import "SetCardCollectionViewCell.h"
 
-#define SET_STARTING_CARD_COUNT 20
+#define SET_STARTING_CARD_COUNT 12
 #define SET_MATCHING_MODE 3
 
 @implementation SetGameViewController
@@ -105,6 +105,9 @@
             setCardView.faceUp = setCard.isFaceUp;
             
             setCardView.hidden = setCard.isUnplayable ? YES : NO;
+            
+            
+            
         }
     }
 }
