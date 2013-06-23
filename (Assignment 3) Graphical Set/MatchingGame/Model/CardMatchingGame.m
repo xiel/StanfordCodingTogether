@@ -18,6 +18,7 @@
 
 //array to hold the cars of our game, lazy instantiation again
 @property (strong, nonatomic) NSMutableArray *cards; //of Card
+@property (strong, nonatomic) Deck *deck;
 
 @end
 
@@ -40,6 +41,10 @@
     self = [super init];
     
     if(self){
+        
+        //save deck
+        self.deck = deck;
+        
         //loop through the specified count of cards
         for (int i = 0; i < count; i++) {
             Card *card = [deck drawRandomCard];
@@ -146,6 +151,13 @@
 
 - (int)numberOfCardsInPlay {
     return self.cards.count;
+}
+
+- (void)addAdditionalCardToGame {
+    Card *card = [self.deck drawRandomCard];
+//    if(card){
+        [self.cards addObject:card];
+//    }
 }
 
 #define MATCH_MODE 2

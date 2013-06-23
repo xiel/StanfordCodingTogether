@@ -14,6 +14,7 @@
 
 //designated initializer, use this instead of init
 - (id)initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck;
+- (void)addAdditionalCardToGame;
 
 - (Card *)cardAtIndex:(NSUInteger)index;
 - (void)removeCardAtIndex:(NSUInteger)index;

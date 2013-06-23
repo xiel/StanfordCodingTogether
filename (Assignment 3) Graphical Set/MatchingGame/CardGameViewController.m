@@ -114,11 +114,15 @@
 
 - (IBAction)flipCard:(UITapGestureRecognizer *)gesture {
     
+    NSLog(@"flipcard!");
+    
     //get the tap location and the index of the card
     CGPoint tabLocation = [gesture locationInView:self.cardCollectionView];
     NSIndexPath *indexPath = [self.cardCollectionView indexPathForItemAtPoint:tabLocation];
     
     if(indexPath){
+        
+         NSLog(@"we have index path!");
         
         //let the game model do the flipping
         [self.game flipCardAtIndex:indexPath.item];
@@ -132,6 +136,14 @@
         //update the UI whenever a card is flipped
         [self updateUI];
     }
+}
+
+- (IBAction)addMoreCards:(id)sender {
+    
+    [self.game addAdditionalCardToGame];
+    [self.cardCollectionView reloadData];
+    [self updateUI];
+    
 }
 
 //redeal cards / restart the game

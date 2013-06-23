@@ -142,8 +142,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="viewControllers" id="pLj-VR-1Vn"/>
                         <segue destination="OiM-P2-oYL" kind="relationship" relationship="viewControllers" id="Xf8-Oq-bfV"/>
+                        <segue destination="2" kind="relationship" relationship="viewControllers" id="pLj-VR-1Vn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="neE-l7-tqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -228,6 +228,7 @@
                                         <gestureRecognizers/>
                                         <connections>
                                             <outlet property="setCardView" destination="fa5-QS-RWU" id="hRa-aC-SYl"/>
+                                            <outletCollection property="gestureRecognizers" destination="M30-a7-75h" appends="YES" id="tzk-mj-SrN"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -235,6 +236,26 @@
                                     <outlet property="dataSource" destination="OiM-P2-oYL" id="ULa-Og-vMF"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="261" verticalCompressionResistancePriority="622" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77I-fi-AUm">
+                                <rect key="frame" x="108" y="457" width="92" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.57367072139999997" green="0.80273410950000001" blue="0.82749771900000002" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="4bA-WK-DF7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" title="Add Cards">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addMoreCards:" destination="OiM-P2-oYL" eventType="touchUpInside" id="VFW-n4-RPD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -244,10 +265,13 @@
                             <constraint firstItem="SqR-Et-TAK" firstAttribute="top" secondItem="e2E-sI-pmf" secondAttribute="bottom" constant="8" symbolic="YES" id="9NT-hO-2aa"/>
                             <constraint firstAttribute="bottom" secondItem="xWf-df-vzL" secondAttribute="bottom" constant="18" id="9by-Gs-0Dw"/>
                             <constraint firstAttribute="trailing" secondItem="9M0-Pp-9j5" secondAttribute="trailing" constant="20" id="C9R-dc-QeH"/>
+                            <constraint firstItem="77I-fi-AUm" firstAttribute="leading" secondItem="SqR-Et-TAK" secondAttribute="trailing" constant="8" id="EFY-WE-mDz"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SqR-Et-TAK" secondAttribute="trailing" constant="20" symbolic="YES" id="EVw-P1-w9Q"/>
                             <constraint firstItem="xWf-df-vzL" firstAttribute="top" secondItem="Faf-WA-YV0" secondAttribute="bottom" constant="8" symbolic="YES" id="GPK-4t-mMJ"/>
                             <constraint firstItem="SqR-Et-TAK" firstAttribute="top" secondItem="Faf-WA-YV0" secondAttribute="top" id="JWN-QA-Zuw"/>
                             <constraint firstItem="Faf-WA-YV0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SqR-Et-TAK" secondAttribute="trailing" priority="600" constant="8" symbolic="YES" id="Kim-7c-kqD"/>
+                            <constraint firstItem="SqR-Et-TAK" firstAttribute="height" secondItem="77I-fi-AUm" secondAttribute="height" id="LE5-3d-UXN"/>
+                            <constraint firstItem="SqR-Et-TAK" firstAttribute="baseline" secondItem="77I-fi-AUm" secondAttribute="baseline" id="S9a-82-ocm"/>
                             <constraint firstItem="9M0-Pp-9j5" firstAttribute="leading" secondItem="14y-wa-fi6" secondAttribute="leading" constant="20" id="VCM-Zd-ZnJ"/>
                             <constraint firstItem="SqR-Et-TAK" firstAttribute="leading" secondItem="14y-wa-fi6" secondAttribute="leading" constant="20" symbolic="YES" id="VRX-Vc-5ac"/>
                             <constraint firstItem="Faf-WA-YV0" firstAttribute="top" secondItem="e2E-sI-pmf" secondAttribute="bottom" constant="8" symbolic="YES" id="Vzy-jr-nL6"/>
@@ -287,6 +311,7 @@
         <class className="CardGameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addMoreCards:"/>
                 <relationship kind="action" name="flipCard:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="flipResultLabel" candidateClass="UILabel"/>

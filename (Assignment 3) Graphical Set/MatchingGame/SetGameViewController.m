@@ -104,20 +104,10 @@
             setCardView.shade = setCard.shade;
             setCardView.faceUp = setCard.isFaceUp;
             
-//            if(!setCard.isUnplayable){
-//                setCardTextView.hidden = NO;
-//                
-//                if(setCard.isFaceUp){
-//                    setCardTextView.backgroundColor = [UIColor lightGrayColor];
-//                } else {
-//                    setCardTextView.backgroundColor = [UIColor whiteColor];
-//                }
-//            } else {
-//                //disabled cards
-//                setCardTextView.hidden = YES;
-//            }
+            setCardView.hidden = setCard.isUnplayable ? YES : NO;
         }
     }
 }
+
 
 @end
