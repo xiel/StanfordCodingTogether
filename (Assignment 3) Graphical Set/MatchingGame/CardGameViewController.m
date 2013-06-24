@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *flipResultLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
+@property (weak, nonatomic) IBOutlet UIButton *moreCardsButton;
 
 //instance properties
 @property (nonatomic) int flipCount;
@@ -113,15 +114,11 @@
 
 - (IBAction)flipCard:(UITapGestureRecognizer *)gesture {
     
-    NSLog(@"flipcard!");
-    
     //get the tap location and the index of the card
     CGPoint tabLocation = [gesture locationInView:self.cardCollectionView];
     NSIndexPath *indexPath = [self.cardCollectionView indexPathForItemAtPoint:tabLocation];
     
     if(indexPath){
-        
-         NSLog(@"we have index path!");
         
         //let the game model do the flipping
         [self.game flipCardAtIndex:indexPath.item];
@@ -152,6 +149,10 @@
     [self.cardCollectionView reloadData];
     [self updateUI];
     
+    [self.cardCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem: (self.game.numberOfCardsInPlay-1) inSection:0]
+                                    atScrollPosition:UICollectionViewScrollPositionBottom
+                                            animated:YES];
+    
 }
 
 //redeal cards / restart the game
@@ -159,6 +160,7 @@
     self.game = nil;
     self.gameResult = nil;
     self.flipCount = 0;
+    self.moreCardsButton.hidden = NO;
     [self.cardCollectionView reloadData];
     [self updateUI];
 }

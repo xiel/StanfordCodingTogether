@@ -34,7 +34,6 @@
 
 //drawing code
 - (void)drawRect:(CGRect)rect {
-    NSLog(@"Draw SetCard with %d %d %d %d", self.color, self.symbol, self.shade, self.elementsCount);
     
     //draw the card
     UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.bounds.size.width * CORNER_RADIUS_IN_WIDTH];
@@ -54,7 +53,6 @@
     UIColor *baseColor = [self getColorFor:self.color];
     
     [self drawSymbolsIn:baseColor];
-    
     
 }
 

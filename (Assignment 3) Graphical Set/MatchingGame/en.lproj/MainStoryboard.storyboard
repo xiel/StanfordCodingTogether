@@ -290,6 +290,7 @@
                         <outlet property="cardCollectionView" destination="e2E-sI-pmf" id="iNd-NN-UHb"/>
                         <outlet property="flipResultLabel" destination="9M0-Pp-9j5" id="7Bm-hp-cVY"/>
                         <outlet property="flipsLabel" destination="Faf-WA-YV0" id="YvE-Ei-cuT"/>
+                        <outlet property="moreCardsButton" destination="77I-fi-AUm" id="b6o-22-2qZ"/>
                         <outlet property="scoreLabel" destination="xWf-df-vzL" id="0TS-JT-eiW"/>
                     </connections>
                 </viewController>
@@ -311,11 +312,12 @@
         <class className="CardGameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addMoreCards:"/>
+                <relationship kind="action" name="addMoreCards:" candidateClass="UIButton"/>
                 <relationship kind="action" name="flipCard:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="flipResultLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="moreCardsButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
