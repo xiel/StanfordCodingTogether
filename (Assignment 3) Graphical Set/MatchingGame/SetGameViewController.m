@@ -15,6 +15,13 @@
 #define SET_STARTING_CARD_COUNT 12
 #define SET_MATCHING_MODE 3
 
+@interface SetGameViewController()
+@property (weak, nonatomic) IBOutlet SetCardView *latestCardViewOne;
+@property (weak, nonatomic) IBOutlet SetCardView *latestCardViewTwo;
+@property (weak, nonatomic) IBOutlet SetCardView *latestCardViewThree;
+@property (strong, nonatomic) NSArray *latestCardViews;
+@end
+
 @implementation SetGameViewController
 
 + (int)matchMode {
@@ -29,60 +36,73 @@
     return [[SetCardDeck alloc] init];
 }
 
+- (NSArray *)latestCardViews {
+    if(!_latestCardViews) {
+        _latestCardViews = @[self.latestCardViewOne,
+                             self.latestCardViewTwo,
+                             self.latestCardViewThree];
+    }
+    return _latestCardViews;
+}
+
 - (void)updateFlipResultLabel:(UILabel*)label usingCards:(NSArray *)cards scored:(int)score {
     
-    return;
-    
     SetCard *latestSetCard = [cards lastObject];
+    
+//    for (int i = 1; i<=2; i++) {
+//        if(i <= cards.count){
+//            SetCard *setCard = cards[cards.count - i];
+//            SetCardView *setCardView = self.latestCardViews[self.latestCardViews.count - i];
+//            
+//            setCardView.elementsCount = setCard.elementsCount;
+//            setCardView.color = setCard.color;
+//            setCardView.symbol = setCard.symbol;
+//            setCardView.shade = setCard.shade;
+//            setCardView.faceUp = setCard.isFaceUp;
+//        }
+//        
+//    }
+    
+    int i = 0;
+    for (SetCardView *setCardView in self.latestCardViews){
+        
+        if(i < cards.count){
+            
+            setCardView.hidden = NO;
+            SetCard *setCard = cards[i];
+            
+            setCardView.elementsCount = setCard.elementsCount;
+            setCardView.color = setCard.color;
+            setCardView.symbol = setCard.symbol;
+            setCardView.shade = setCard.shade;
+            setCardView.faceUp = setCard.isFaceUp;
+            
+        } else {
+            setCardView.hidden = YES;
+        }
+        
+        i++;
+    }
     
     //check if there is at least one card
     if(latestSetCard){
         //match or mismatch
         if(score != 0){
-            int cardCount = 0;
             
             //match
             if(score > 0){
-                NSMutableAttributedString *newText = [[NSMutableAttributedString alloc] initWithString:@"Matched "];
                 
-                for(SetCard *setCard in cards){
-                    if(cardCount != 0){
-                        [newText appendAttributedString:[[NSAttributedString alloc] initWithString:@" & "]];
-                    }
-//                    [newText appendAttributedString:[self attributedStringForSetCard:setCard]];
-                    cardCount++;
-                }
-                
-                [newText appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" for %d points!", score]]];
-                label.attributedText = newText;
             }
             //mismatch
             else {
                 
-                NSMutableAttributedString *newText = [[NSMutableAttributedString alloc] init];
-                
-                for(SetCard *setCard in cards){
-                    if(cardCount != 0){
-                        [newText appendAttributedString:[[NSAttributedString alloc] initWithString:@" & "]];
-                    }
-//                    [newText appendAttributedString:[self attributedStringForSetCard:setCard]];
-                    cardCount++;
-                }
-                
-                [newText appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" don't match! %d points penalty!", score]]];
-                label.attributedText = newText;
+               
             }
         } else
-            //no match, just flipped a card up
+        //no match, just flipped a card up
         {
-            NSMutableAttributedString *newText = [[NSMutableAttributedString alloc] initWithString:latestSetCard.isFaceUp ? @"Flipped up " : @"Flipped down "];
-//            [newText appendAttributedString:[self attributedStringForSetCard:latestSetCard]];
-            label.attributedText = newText;
+            
         }
-    }
-    //if there are no cards (at the beginning of a new game)
-    else {
-        label.text = @"Let's play!";
     }
 }
 
